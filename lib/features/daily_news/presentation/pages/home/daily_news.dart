@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/features/daily_news/data/models/article.dart';
 import 'package:news_app/features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
 import 'package:news_app/features/daily_news/presentation/bloc/article/remote/remote_article_state.dart';
 import 'package:news_app/features/daily_news/presentation/widgets/article_tile.dart';
@@ -48,10 +49,15 @@ class DailyNews extends StatelessWidget {
   Widget _buildArticle(List<ArticleEntity> articles) {
     return ListView(
       children: [
-        ...List<Widget>.from(articles.map((e) => Builder(
-            builder: (context) => ArticleWidget(
-                  article: e,
-                )))),
+        ...List<Widget>.from(
+          articles.map(
+            (e) => Builder(
+              builder: (context) => ArticleWidget(
+                article: e,
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
