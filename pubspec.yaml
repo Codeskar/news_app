@@ -17,6 +17,7 @@ dependencies:
   dio: ^5.2.1+1
   flutter_riverpod: ^2.3.6
   freezed: ^2.3.5
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_test:
