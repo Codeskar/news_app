@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/config/theme/app_themes.dart';
-import 'package:news_app/features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
-import 'package:news_app/features/daily_news/presentation/bloc/article/remote/remote_article_event.dart';
-import 'package:news_app/features/daily_news/presentation/pages/home/daily_news.dart';
-import 'package:news_app/injection_container.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-Future<void> main() async {
-  await initializeDependencies();
-  runApp(const MyApp());
+import 'pages/home_page.dart';
+
+void main() {
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,13 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<RemoteArticlesBloc>(
-      create: (context) => sl()..add(const GetArticles()),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: theme(),
-        home: const DailyNews(),
-      ),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
     );
   }
 }
